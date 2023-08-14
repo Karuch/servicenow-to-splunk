@@ -1,0 +1,17 @@
+index="index_name" ( outages: )
+| sort -_time
+| head 3
+| eval color=if(match(_raw, "(^|[^0-9])0([^0-9]|$)"), "#53A051", "#f7bc38")
+| table _raw, color
+
+index="index_name" ( tickets: )
+| sort -_time
+| head 3
+| eval color=if(match(_raw, "(^|[^0-9])0([^0-9]|$)"), "#53A051", "#f7bc38")
+| table _raw, color
+
+index="index_name" ( changes: )
+| sort -_time
+| head 3
+| eval color=if(match(_raw, "(^|[^0-9])0([^0-9]|$)"), "#53A051", "#f7bc38")
+| table _raw, color

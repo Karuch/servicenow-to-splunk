@@ -1,0 +1,28 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: servicenow-to-splunk
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: servicenow-to-splunk
+  template:
+    metadata:
+      labels:
+        app: servicenow-to-splunk
+      annotations:
+        collectord.io/index: index_name
+        collectord.io/output: splunk_instance_name
+    spec:
+      containers:
+        - name: servicenow_to_splunk
+          image: app_image
+          resources:
+            limits:
+              cpu: '1'
+              memory: 100Mi
+            requests:
+              cpu: 250m
+              memory: 100Mi
